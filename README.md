@@ -1,6 +1,6 @@
 # (English) Middle Unity Developer Test
 
-## Coding Principles
+## 1.Coding Principles
 
 1. **Single Responsibility Principle (SRP)**  
    New features and services can be added without breaking the overall project logic. Special attention is paid to separating data, visuals, and logic. For this purpose, MV (Model-View) approaches are used.
@@ -8,25 +8,25 @@
 2. **Configuration Management**  
    Configurations have been moved into Scriptable Objects. Story text is parsed from writer-friendly formats.
 
-## Save/Load System
+## 2.Save/Load System
 
 A simple system for saving and loading JSON files has been implemented. If necessary, it can be easily extended into a more robust solution.
 
-## Popup/UI System
+## 3.Popup/UI System
 
 A simple factory for popups has been created. This is a simplified version. If required, it can be further optimized by implementing object reuse instead of creating new instances each time.
 
 ### UI Components Used
-- TextMeshPro, Image, Button — standard Unity components
+- TextMeshPro, Image, Button, Canvas — standard Unity components
 - Vertical/Horizontal Layout Group + Content Size Fitter — for automatic arrangement of UI elements
 
-## UI Performance & Refactoring
+## 4.UI Performance & Refactoring
 
 Two versions of the implementation were created:
 - The first follows the suggested code structure.
 - The second uses a cleaner approach with subscriptions to property value changes.
 
-## Gameplay and State Logic
+## 5.Gameplay and State Logic
 
 - Object registration upon creation is handled via `EntityRegistry`.
 - Object pooling has been implemented (especially useful for large numbers of entities).
@@ -47,47 +47,44 @@ In this test task, the main focus was on making the code easily extendable and m
 
 # (Russian) Middle Unity Developer Тестовое
 
-## Принципы кодирования
+## 1.Coding Principles
 
-1. **Принцип единственной ответственности (Single Responsibility Principle — SRP)**  
-   Новые возможности и сервисы можно добавлять, не нарушая общую логику проекта. Особое внимание уделяется разделению данных, визуальной части и логики. Для этого используются подходы MV (Model-View).
+1. **Раздреление обязанностей (Single Responsibility Principle — SRP)**  
+  Мы сможем добавлять новые фичи и сервисы не ломая общую логику проекта. Так же важно разделять данные, визуал и логику. Для этого можно использовать MV подходы.
 
-2. **Управление конфигурациями**  
-   Конфигурации вынесены в Scriptable Objects. Текст истории парсится из удобных для писателей форматов.
+2. **Использование конфигов**  
+   Вынесение конфигов в Scriptable Objects и парсинг текста (для сюжета) из удобных для писателей форматов.
 
-## Система сохранения/загрузки
+## 2. Save/Load Utility
 
-Реализована простая система сохранения и загрузки JSON-файлов. При необходимости её можно легко расширить до более надёжного решения.
+Я создал простую систему для записи файлов JSon. При необходимости можно сделать обертку, если понадобится более сложная система.
 
-## Система попапов и UI
+## 3.Popup/UI System
 
-Создан простой фабричный класс для попапов. Это упрощённая версия. При необходимости её можно оптимизировать, внедрив переиспользование объектов вместо создания новых каждый раз.
+Я сделал простую фабрику для попапов. Она упрощенная, так же при необходимости можно не создавать, а переиспользовать один объект для оптимизации.
 
 ### Используемые UI-компоненты
-- TextMeshPro, Image, Button — стандартные компоненты Unity
-- Vertical/Horizontal Layout Group + Content Size Fitter — для автоматического размещения элементов интерфейса
+- TextMeshPro, Image, Button, Canvas — стандартные компоненты 
+- Vertical/Horizontal Layout Group + Content Size Fitter — для автоматического размещения и выравнивания элементов интерфейса
 
-## Производительность UI и рефакторинг
+## 4.UI Performance & Refactoring
 
-Было создано две версии реализации:
-- Первая следует предложенной структуре кода.
-- Вторая использует более чистый подход с подпиской на изменения значений свойств.
+Я написал 2 варианта. 
+ - Первый по аналогии с предложенным кодом
+ - Второй с простой реализацией через подписку на изменение value в свойствах.
 
-## Игровая логика и состояние
+## 5.Gameplay/State Logic
 
-- Реализована регистрация объектов при создании через `EntityRegistry`.
-- Добавлен объектный пул (особенно актуально при большом количестве сущностей).
-- Для лучшей организации кода использован паттерн Mediator.
+- Реализовал регистрацию объектов при создании в EntityRegistry.
+- Добавил пулинг объектов (так как в этом случае оно более логично, если мы имеем дело с большим количеством сущностей)
+- Для чистоты кода добавил медиатор.
 
-## Дополнительные идеи
+## Optional Bonus
 
-- Рассмотреть использование **Zenject** для внедрения зависимостей.
-- Применить **DataProviders** для упрощения работы с большими объёмами текста и графики.
-- Настроить ScriptableObjects и собственный парсер текста, удобный для писателей.
-- Изучить **Naninovel** (пока не использовался, но готов изучить).
-- Провести оптимизацию с помощью Unity Profiler.
-
+- Возможно я бы сделал инициализацию через Zenject , использовал бы DataProviders, чтобы упростить работу с большим объемом текста и графики
+- Настройка ScriptableObjects/кастомный парсер текста(для писателей)/использовать NaniNovel
+- Через профайлер:)
 ---
 
 **P.S.**  
-В рамках тестового задания основной акцент был сделан на том, чтобы код был легко расширяемым и модифицируемым в будущем. Я всегда готов адаптироваться к существующей архитектуре проекта.
+В данном тестовом я отталкивался от идеи возможного расширения и модификации кода. В любом случае всегда подстраиваюсь под архитектуру проекта :)
