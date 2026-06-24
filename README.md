@@ -1,28 +1,80 @@
-1. Coding Principles:
+# Implementation Notes
 
-1)Single Responsibility Principle (SRP)
-We can add new features and services without breaking the overall project logic. It is also important to separate data, visuals, and logic. For this purpose, MV (Model-View) approaches can be used.
-2)Configuration Management
-Moving configurations into Scriptable Objects and parsing story text from writer-friendly formats.
+**Unity Test Task — Code Architecture**
 
-2. Save/Load Utility
-I created a simple system for saving and loading JSON files. If needed, it can be wrapped into a more robust system later.
-3. Popup/UI System
-I implemented a simple factory for popups. It is a simplified version; if necessary, we can optimize it further by reusing a single object instead of creating new ones.
-3.1. UI Components Used:
+Clean, extensible and maintainable code architecture.
 
-TextMeshPro / Image / Button — Standard Unity components
-Vertical/Horizontal Layout Group + Content Size Fitter — for automatically arranging UI elements
+---
 
-4. UI Performance & Refactoring
-I made  two versions of the implementation. The first one follows the suggested code structure, while the second uses a cleaner approach with subscriptions to property value changes.
-5. Gameplay/State Logic
-I implemented object registration upon creation using an EntityRegistry. I also added object pooling (which makes sense when dealing with a large number of entities). For better code organization added a Mediator.
-Optional Bonus Ideas:
+## 🎯 Core Principles
 
-- Possibly use Zenject for dependency injection. Utilize DataProviders to simplify working with large amounts of text and graphics.
-- Set up ScriptableObjects / custom text parser (writer-friendly) / consider using Naninovel (I haven’t used it yet, but I’m ready to learn it).
-- Profile optimization using the Unity Profiler:)
+### 1. Single Responsibility Principle (SRP)
+- Each class has a single, well-defined responsibility
+- New features and services can be added without breaking existing logic
+- Clear separation of **Data**, **Logic**, and **Visuals**
+- Using **MV (Model-View)** approach
 
-P.S. In this test task, I focused on the idea of making the code easily extendable and modifiable in the future.
-In any case, I always adapt to the existing architecture of the project :)
+### 2. Configuration Management
+- All configurations are moved to **ScriptableObjects**
+- Story text is parsed from writer-friendly formats
+
+---
+
+## 🛠️ Implemented Systems
+
+### Save/Load Utility
+Simple and reliable system for saving and loading JSON files.  
+Can be easily extended into a more robust solution if needed.
+
+### Popup / UI System
+- Implemented a simple factory for popups
+- Simplified version (can be further optimized with object pooling if necessary)
+
+#### UI Components Used:
+- **TextMeshPro**
+- **Image / Button** — standard Unity UI components
+- **Vertical/Horizontal Layout Group** + **Content Size Fitter** — for automatic adaptive layout
+
+---
+
+## ⚡ UI Implementation & Refactoring
+
+Two versions of the UI implementation were created:
+1. First version follows the suggested code structure
+2. Second version uses a cleaner approach with property change subscriptions
+
+### Gameplay & State Logic
+- **EntityRegistry** — automatic registration of objects upon creation
+- **Object Pooling** — implemented for handling large numbers of entities
+- **Mediator pattern** — added for better code organization and loose coupling
+
+---
+
+## 🚀 Optional Bonus Ideas
+
+- Integrate **Zenject** for Dependency Injection
+- Use **DataProviders** to simplify working with large amounts of text and graphics
+- Custom text parser + ScriptableObjects (writer-friendly format)
+- Consider **Naninovel** integration (visual novel framework)
+- Performance profiling with **Unity Profiler**
+
+---
+
+## 📌 Project Focus
+
+> In this test task, the main emphasis was placed on making the code **easily extendable and modifiable** in the future.
+
+I am always ready to adapt to the existing architecture and coding standards of the project.
+
+---
+
+**Tech Stack:**
+- Unity
+- C#
+- TextMeshPro
+- ScriptableObjects
+- JSON
+
+---
+
+*Clean Code • Good Architecture • Maintainability First*
