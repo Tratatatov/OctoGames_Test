@@ -1,80 +1,93 @@
-# Implementation Notes
+# (English) Middle Unity Developer Test
 
-**Unity Test Task — Code Architecture**
+## Coding Principles
 
-Clean, extensible and maintainable code architecture.
+1. **Single Responsibility Principle (SRP)**  
+   New features and services can be added without breaking the overall project logic. Special attention is paid to separating data, visuals, and logic. For this purpose, MV (Model-View) approaches are used.
 
----
+2. **Configuration Management**  
+   Configurations have been moved into Scriptable Objects. Story text is parsed from writer-friendly formats.
 
-## 🎯 Core Principles
+## Save/Load System
 
-### 1. Single Responsibility Principle (SRP)
-- Each class has a single, well-defined responsibility
-- New features and services can be added without breaking existing logic
-- Clear separation of **Data**, **Logic**, and **Visuals**
-- Using **MV (Model-View)** approach
+A simple system for saving and loading JSON files has been implemented. If necessary, it can be easily extended into a more robust solution.
 
-### 2. Configuration Management
-- All configurations are moved to **ScriptableObjects**
-- Story text is parsed from writer-friendly formats
+## Popup/UI System
 
----
+A simple factory for popups has been created. This is a simplified version. If required, it can be further optimized by implementing object reuse instead of creating new instances each time.
 
-## 🛠️ Implemented Systems
+### UI Components Used
+- TextMeshPro, Image, Button — standard Unity components
+- Vertical/Horizontal Layout Group + Content Size Fitter — for automatic arrangement of UI elements
 
-### Save/Load Utility
-Simple and reliable system for saving and loading JSON files.  
-Can be easily extended into a more robust solution if needed.
+## UI Performance & Refactoring
 
-### Popup / UI System
-- Implemented a simple factory for popups
-- Simplified version (can be further optimized with object pooling if necessary)
+Two versions of the implementation were created:
+- The first follows the suggested code structure.
+- The second uses a cleaner approach with subscriptions to property value changes.
 
-#### UI Components Used:
-- **TextMeshPro**
-- **Image / Button** — standard Unity UI components
-- **Vertical/Horizontal Layout Group** + **Content Size Fitter** — for automatic adaptive layout
+## Gameplay and State Logic
 
----
+- Object registration upon creation is handled via `EntityRegistry`.
+- Object pooling has been implemented (especially useful for large numbers of entities).
+- A Mediator pattern has been added for better code organization and decoupling.
 
-## ⚡ UI Implementation & Refactoring
+## Optional Bonus Ideas
 
-Two versions of the UI implementation were created:
-1. First version follows the suggested code structure
-2. Second version uses a cleaner approach with property change subscriptions
-
-### Gameplay & State Logic
-- **EntityRegistry** — automatic registration of objects upon creation
-- **Object Pooling** — implemented for handling large numbers of entities
-- **Mediator pattern** — added for better code organization and loose coupling
+- Consider using **Zenject** for dependency injection.
+- Utilize **DataProviders** to simplify work with large amounts of text and graphics.
+- Set up ScriptableObjects and a custom text parser optimized for writers.
+- Explore **Naninovel** (not yet used, but ready to learn).
+- Perform optimization profiling using the Unity Profiler.
 
 ---
 
-## 🚀 Optional Bonus Ideas
+**P.S.**  
+In this test task, the main focus was on making the code easily extendable and modifiable in the future. I am always ready to adapt to the existing architecture of the project.
 
-- Integrate **Zenject** for Dependency Injection
-- Use **DataProviders** to simplify working with large amounts of text and graphics
-- Custom text parser + ScriptableObjects (writer-friendly format)
-- Consider **Naninovel** integration (visual novel framework)
-- Performance profiling with **Unity Profiler**
+# (Russian) Middle Unity Developer Тестовое
+
+## Принципы кодирования
+
+1. **Принцип единственной ответственности (Single Responsibility Principle — SRP)**  
+   Новые возможности и сервисы можно добавлять, не нарушая общую логику проекта. Особое внимание уделяется разделению данных, визуальной части и логики. Для этого используются подходы MV (Model-View).
+
+2. **Управление конфигурациями**  
+   Конфигурации вынесены в Scriptable Objects. Текст истории парсится из удобных для писателей форматов.
+
+## Система сохранения/загрузки
+
+Реализована простая система сохранения и загрузки JSON-файлов. При необходимости её можно легко расширить до более надёжного решения.
+
+## Система попапов и UI
+
+Создан простой фабричный класс для попапов. Это упрощённая версия. При необходимости её можно оптимизировать, внедрив переиспользование объектов вместо создания новых каждый раз.
+
+### Используемые UI-компоненты
+- TextMeshPro, Image, Button — стандартные компоненты Unity
+- Vertical/Horizontal Layout Group + Content Size Fitter — для автоматического размещения элементов интерфейса
+
+## Производительность UI и рефакторинг
+
+Было создано две версии реализации:
+- Первая следует предложенной структуре кода.
+- Вторая использует более чистый подход с подпиской на изменения значений свойств.
+
+## Игровая логика и состояние
+
+- Реализована регистрация объектов при создании через `EntityRegistry`.
+- Добавлен объектный пул (особенно актуально при большом количестве сущностей).
+- Для лучшей организации кода использован паттерн Mediator.
+
+## Дополнительные идеи
+
+- Рассмотреть использование **Zenject** для внедрения зависимостей.
+- Применить **DataProviders** для упрощения работы с большими объёмами текста и графики.
+- Настроить ScriptableObjects и собственный парсер текста, удобный для писателей.
+- Изучить **Naninovel** (пока не использовался, но готов изучить).
+- Провести оптимизацию с помощью Unity Profiler.
 
 ---
 
-## 📌 Project Focus
-
-> In this test task, the main emphasis was placed on making the code **easily extendable and modifiable** in the future.
-
-I am always ready to adapt to the existing architecture and coding standards of the project.
-
----
-
-**Tech Stack:**
-- Unity
-- C#
-- TextMeshPro
-- ScriptableObjects
-- JSON
-
----
-
-*Clean Code • Good Architecture • Maintainability First*
+**P.S.**  
+В рамках тестового задания основной акцент был сделан на том, чтобы код был легко расширяемым и модифицируемым в будущем. Я всегда готов адаптироваться к существующей архитектуре проекта.
