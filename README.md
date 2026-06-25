@@ -1,4 +1,4 @@
-## 🇷🇺 Russian Version
+## Russian Version
 
 ### 1. Coding Principles
 1. **Разделение обязанностей (Single Responsibility Principle — SRP)**  
